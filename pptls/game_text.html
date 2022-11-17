@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazinga!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css"> 
+</head>
+<body>
+    <!-- Panell de puntuació -->
+    <div class="score">        
+        <div class="player">
+            <img src="./player.png" alt="">
+            <h2 id="player_points"></h2>
+        </div>
+        <div class="machine">
+            <img src="./machine.png" alt="">
+            <h2 id="machine_points"></h2>                
+        </div>             
+    </div>
+    <!-- Imatge principal del joc -->
+    <div class="banner">
+        <img src="./signs.png" alt="">
+    </div>
+
+    <h1>Piedra - Papel - Tijeras - Largato - Spock</h1>
+      
+    <!-- Botó per iniciar nova partida -->
+    <div class="start">
+        <input type="button" id="start" value="New Game">
+    </div>
+   
+    <!-- Formulari per elegir opció de joc -->
+    <form id="game" action="#">      
+        <div class="option">
+            <!-- Capturar el text que será procesat per JS -->
+            <label for="playerText"><span id="name"></span>, escribe una opción</label>  
+            <input type="text" id="playerText" name="playerText" autofocus>
+            <h6 class="mini_label">*Puedes pulsar Enter</h6>
+            <!-- Botó per jugar ronda i botó per sortir -->
+            <div class="game_buttons">
+                <input type="button" id="play" value="Play"/>
+                <input type="button" id="exit" value="Exit"/>
+            </div> 
+        </div>
+        
+    </form>    
+    <!-- Panell de resultat -->
+    <div class="result">
+        <h4 id="message"></h4>
+        <div class="choices" id="choices_img"></div>
+    </div>
+    <br>
+    <!-- Crida a JS --> 
+    <script src="./script.js"></script>    
+   
+</body>
+</html>

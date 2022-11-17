@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazinga!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <!-- Crida al estil -->
+    <link rel="stylesheet" href="./style_buttons.css"> 
+</head>
+<body>
+    <!-- Panell de puntuació -->
+    <div class="score">        
+        <div class="player">
+            <img src="./player.png" alt="">
+            <h2 id="player_points"></h2>
+        </div>
+        <div class="machine">
+            <img src="./machine.png" alt="">
+            <h2 id="machine_points"></h2>                
+        </div> 
+        <input type="button" id="exit" value="Exit"/>            
+    </div>
+    <!-- Imatge del joc -->
+    <div class="banner">
+        <img src="./sign_rel.png" alt="">
+    </div>
+
+    <h1>Piedra - Papel - Tijeras - Largato - Spock</h1>
+    
+    <!-- Botó per iniciar partida -->
+    <div class="start">
+        <input type="button" id="start" value="New Game">
+    </div>
+   
+    <!-- Botons de joc per escollir opció i jugar -->
+    <div id="game" >
+        <input type="image" id="b_piedra" value="piedra" src="./piedra.png" alt="">
+        <input type="image" id="b_papel" value="papel" src="./papel.png" alt="">  
+        <input type="image" id="b_tijeras" value="tijeras" src="./tijeras.png" alt="">  
+        <input type="image" id="b_lagarto" value="lagarto" src="./lagarto.png" alt="">  
+        <input type="image" id="b_spock" value="spock" src="./spock.png" alt="">
+    </div>    
+
+    <!-- Panell de resultat -->
+    <div class="result">
+        <h4 id="message"></h4>
+        <div class="choices" id="choices_img"></div>
+    </div>
+    <br>
+    <!-- Crida al codi JS  --> 
+    <script src="./script_buttons.js"></script>    
+   
+</body>
+</html>

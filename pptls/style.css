@@ -1,0 +1,108 @@
+body{
+    display:flex; 
+    flex-direction: column; 
+    background-color:#424242;
+    color:white;
+    /* padding-top:100px; */
+    font-family: 'Varela Round', sans-serif;
+}      
+h1,h2,h3{    
+    text-align: center;
+}
+.banner{
+    margin:0 auto;
+    
+}
+.banner img{    
+    opacity: .8; 
+    height: auto; 
+    width: 100%;
+    max-width: 600px;
+}
+form{
+    margin: 0 auto;
+}
+input[type=text]{
+    border-style: none;
+    border-radius: 7px;
+    padding:5px;
+    margin-top:.5rem;
+    font-size: 2em;
+    width: 100%;
+    background-color:#4692de;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+    opacity: .7; 
+}
+input[type=button]{
+    border-style: none;
+    font-size: 1.5em;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #79cd34;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+    opacity: .7;
+    cursor:pointer; 
+   
+}
+input[type=button]:hover{
+    
+    box-shadow: 2px 2px  white;
+}
+  
+input[type=button]:active{
+    color: white;
+    background-color: #4692de;
+}
+.mini_label{
+    font-weight: 100;
+    margin:0 !important;    
+    padding-top:5px;
+    text-align: right;
+}
+.option{
+    display: flex;
+    flex-direction: column;
+}
+.game_buttons{
+    display:flex;    
+    gap:2em;
+    margin-top: 1em;
+}
+
+.score{
+    display: flex;         
+    margin: 3rem 2rem;    
+    gap:3em;
+    color:#4692de; 
+}
+
+.score img{
+    width: auto;
+    height: 100px;
+}
+.score h2{
+    font-size: calc(2em + 5px);
+    margin:0;    
+}
+.player, .machine, .start{
+    display: flex;
+    justify-content: center;
+    gap:1em;
+}
+.result{
+    margin: 0 auto;
+    text-align: center;
+}
+#message{
+    font-size: 1.5em;
+}
+.choices{
+    display: inline;    
+}
+.choices img{
+    height: 75px;
+    width: auto;
+    padding: 10px;
+}

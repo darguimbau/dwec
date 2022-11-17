@@ -1,0 +1,93 @@
+body{
+    display:flex; 
+    flex-direction: column; 
+    background-color:#424242;
+    color:white;
+    /* padding-top:100px; */
+    font-family: 'Varela Round', sans-serif;
+}      
+h1,h2,h3{    
+    text-align: center;
+}
+.banner{
+    margin:0 auto;
+    
+}
+.banner img{    
+    opacity: .8; 
+    height: auto; 
+    width: 100%;
+    max-width: 250px;
+}
+#game{
+    display: flex;
+    justify-content: center;
+    gap:1em;
+}
+#game input{
+    height: 75px;
+    width: auto;
+    opacity: .6;    
+}
+#game input:hover{
+   
+    opacity: .9;
+    
+}
+
+.score{
+    display: flex;         
+    margin: 1rem 2rem;    
+    gap:3em;
+    color:white; 
+}
+
+.score img{
+    width: auto;
+    height: 100px;
+}
+.score h2{
+    font-size: calc(2em + 5px);
+    margin:0;    
+}
+.player, .machine, .start{
+    display: flex;
+    justify-content: center;
+    gap:1em;
+}
+input[type=button]{
+    border-style: none;
+    font-size: 1.5em;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #79cd34;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+    opacity: .7;
+    cursor:pointer; 
+   
+}
+input[type=button]:hover{
+    
+    box-shadow: 2px 2px  white;
+}
+  
+input[type=button]:active{
+    color: white;
+    background-color: #4692de;
+}
+.result{
+    margin: 0 auto;
+    text-align: center;
+}
+#message{
+    font-size: 1.5em;
+}
+.choices{
+    display: inline;    
+}
+.choices img{
+    height: 75px;
+    width: auto;
+    padding: 10px;
+}
