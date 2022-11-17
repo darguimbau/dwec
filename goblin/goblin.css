@@ -1,0 +1,40 @@
+body{
+    background-color:rgb(52, 52, 64);
+    color:white;padding:150px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 200;
+}      
+h1, h2, h3{
+    color:rgb(107, 194, 165);
+    text-shadow: 1px 1px 1px #ababab;
+    }
+span{
+    color:rgb(149, 24, 111); 
+    font-size: 4em;
+}
+#form_char{ 
+    display:none;
+}
+.hidden{
+    display:none;
+}
+.char{
+    margin: 0 5px;
+}
+.monigotes{
+    display:flex;
+    height: 150px;
+}
+.goblin_box{
+    display:flex; 
+    width: 200px;
+}
+.knight img{
+    height: 100%;
+}
+.goblin img{
+    height: 100%;
+}        
+.word{
+    font-size: 2em;color:coral;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kill the Goblin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS only algo de estilo predefinido, no incluyo el js-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- CSS propio Queda trabajo de maquetación y de estilo-->
+    <link rel="stylesheet" href="goblin.css">
+    
+</head>
+<body>
+    <h1 id="title">JS Goblin Slayer</h1>
+    <hr>
+    
+    <h4>¡Deberás adivinar el arma, conjuro o acción escogido para sobrevivir!</h4>
+    <h6>(Ayuda en consola)</h6>
+    <br>
+    <div class="times">Time<span class="total_time"></span><br>Time to move<span class="move_time"></span></div>
+    
+    <br>
+    <!-- caja de imagenes --> 
+    <div class="monigotes">
+        <div class="goblin_box">
+            <!-- goblin atacando --> 
+            <div id="goblin" class="hidden goblin">
+                <img src="./img/goblin_attack.webp"/>
+            </div>
+            <!-- goblin muerto --> 
+            <div id="goblin_dead" class="hidden goblin">
+                <img src="./img/goblin_dead.webp"/>
+            </div>
+        </div>
+        <!-- mostrar al héroe --> 
+        <div id="knight" class="knight"></div>
+    </div>
+    
+    <br>
+     <!-- mostrar guiones y letras acertadas --> 
+    <div id="progress_word" class="word"></div>
+    <br>
+    <form id="form_word" class="form-inline" action="#">
+        <div class="input-field">
+            <label for="word_category">Escoge tu opción: </label>
+            <select name="word_category" id="word_category">
+            <!-- <option value="empty"></option>'; començar amb un valor buit? -->
+            <option value="word_category_weapons">Atacar con un arma</option>';
+            <option value="word_category_spells">Lanzar un conjuro</option>';
+            <option value="word_category_actions">Realizar una acción</option>';                     
+            </select>
+            <input type="button"  value="jugar" id="submit_word"> 
+            <!-- <button  name="submit_word" value="" id="submit_word2" >Jugar</button>  Dan problemas  -->
+            
+        </div>     
+    </form>
+    <br>
+    <!-- mostrar letras usadas --> 
+    <div id="used_char"></div>
+
+    <pre>
+        <code>
+          
+        </code>
+    </pre>
+    
+    <!-- JavaScript propio -->
+    <script src="goblin.js"></script> 
+</body>
+</html>
