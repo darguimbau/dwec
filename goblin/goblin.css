@@ -38,3 +38,13 @@ span{
 .word{
     font-size: 2em;color:coral;
 }
+.isCorrect{
+    color:rgb(107, 194, 165);
+}
+.times{
+    font-size: 1rem;
+    align-items:baseline;
+}
+.total_time, .move_time{
+    font-size: 2rem;
+}

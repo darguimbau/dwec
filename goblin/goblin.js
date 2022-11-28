@@ -25,9 +25,11 @@ const panelChar = document.getElementById("used_char");
 const knight = document.getElementById("knight");
 
 //Nuevas para el control de tiempo
+const panelInfo = document.querySelector(".info");
 const panelTime = document.querySelector(".times");
 const totalTime = document.querySelector(".total_time");
 const moveTime = document.querySelector(".move_time");
+
 
 const timeMove = new Date();
 const timeGame = new Date();
@@ -58,9 +60,9 @@ let guessedChar;//guions que canvien a lletres encertades
 
 // Paraules del joc
 
-weaponWords = ["hácha", "alábarda", "éstoque", "espadá", "mártillo", "dága", "estrella del álba", "lánza", "picà", "gàrrote", "sablé"];
-spellWords = ["invisibilidad", "bola de fuego", "rayo de escarcha", "enredar", "proyectil magico", "tormenta de hielo", "rayo solar", "nube apestosa", "miedo", "inmovilizar", "flecha acida"];
-actionWords = ["agarrar", "derribar", "desarmar", "huir", "correr", "defender", "usar pocion", "intimidar", "provocar", "apresar", "aturdir"];
+weaponWords = ["hacha", "alabarda", "estoque", "espada", "martillo", "daga", "estrella del alba", "lanza", "pica", "garrote", "sable", "látigo", "bastón", "ballesta", "cimitarra", "mandoble", "tridente" ];
+spellWords = ["invisibilidad", "bola de fuego", "rayo de escarcha", "enredar", "proyectil mágico", "tormenta de hielo", "rayo solar", "nube apestosa", "miedo", "inmovilizar", "flecha ácida", "dormir", "ceguera", "golpe de rayo", "llama sagrada", "polimorfar", "tentáculos negros", "toque vampírico"];
+actionWords = ["agarrar", "derribar", "desarmar", "retirarse", "correr", "defender", "usar poción", "intimidar", "provocar", "apresar", "aturdir", "esquivar"];
 
 // Joc
 console.log("Elige una opción y dale a 'jugar'")
@@ -83,7 +85,9 @@ function play(){
     
     panelWord.innerHTML = "";
     panelChar.innerHTML = "";
-    formStart.style.display = "none";    
+    formStart.style.display = "none";
+    panelTime.classList.remove("hidden");
+    panelInfo.classList.add("hidden");   
 
     //Guardam la paraula random a un array
     wordSecret = oneWord().split("");
@@ -170,30 +174,37 @@ function charEvent(e){
 //Gestió de llestres noves
 function charPress(char){
     //s'envia per ser mostrada
-    addChar(char);
+    //addChar(char);// ARA DESPRÉS DE SABER SI ES UN ENCERT O NO
     // incloure a l'array per evitar repetició de lletres
     charUsed.push(char);
 
     //comprovam si hi ha encert amb l'array de la paraula secreta
     //empram la funció per llevar accents i join per passar de array a cadena
     if(sinAcentos(wordSecret.join()).includes(char)){
+        //s'envia per ser mostrada
+        addChar(char, true);
         //gestió d'encert
         charHit(char);
     }else{
-        //gestió de fall
+        //s'envia per ser mostrada
+        addChar(char, false);
+        //gestió de fall        
         charFail();
     }
 }
 
-//Incloure lletres noves a HTML
-function addChar(char){
+//Incloure lletres noves a HTML aplicant css si es correcte
+function addChar(char, isCorrect){
     const charElement = document.createElement("span");
     charElement.innerHTML = char;
+    if(isCorrect){
+        charElement.classList.add('isCorrect');
+    }    
     panelChar.appendChild(charElement);
 }
 
 //Gestió de falls
-function charFail(){
+function charFail(){    
     fails++;
     //Canvi d'imatge
     knightDying();
@@ -210,6 +221,7 @@ function charFail(){
 
 //Gestió d'encerts
 function charHit(char){
+    
     //substituim els guions_baixos corresponents per la lletra i sumam un encert
     for(let i = 0; i < wordSecret.length; i++){
         if(sinAcentos(wordSecret[i]) === char){
