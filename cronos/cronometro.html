@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Cronometer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">   
+    <style type="text/css">
+        *{font-family: 'Advent Pro', sans-serif;}
+        body{background-color:rgb(52, 52, 64);color:white;padding:10%;margin:0 auto;max-width: 900px;}
+        h1,h2,h3{color:rgb(190, 126, 159);}
+        input{font-size: 2vh; padding:.5em;margin:.5em;}        
+        .big_numbers{color:rgb(190, 126, 159); font-size: 8vh;} 
+    </style>
+</head>
+<body>
+    <h1>Learning JS UD03: Cronometer</h1>   
+   
+    <hr><br><h4></h4><br>
+
+    <div class="big_numbers">
+        <span id="crono_horas"></span>
+        <span id="crono_minutos"></span>
+        <span id="crono_segundos"></span>
+        <span id="crono_centesimas"></span>             
+    </div>
+    <div class="cronobuttons">
+        <input type="button" id="start" value="Start">
+        <input type="button" disabled id="mark" value="Mark">
+        <input type="button" disabled id="lap" value="Lap">
+        <input type="button" disabled id="stop" value="Stop">
+        <input type="button" disabled id="reset" value="Reset">
+    </div>
+    <div id="marks_list">
+        <h1>Marks & Laps</h1>        
+    </div>
+  
+    <script src="./cronometro.js"></script>
+    
+</body>
+</html>

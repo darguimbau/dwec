@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Countdown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">   
+    <!-- CSS STYLE -->
+    <link rel="stylesheet" href="./countdown_style.css">
+</head>
+<body>
+    <h1>Learning JS UD03: Countdown</h1>
+    
+    <p>COOKIES - OBJ DATE </p>
+   
+    <hr><br><br>
+    <!-- switch for game mode -->
+    <div class="mode_game">             
+        <label class="switch" for="hard_mode">           
+            <input id="hard_mode" type="checkbox">
+            <span class="slider round"></span>                          
+        </label>
+        <span>Hard Mode</span>
+    </div>
+
+    <!-- Initial panel -->
+    <div id="new_game" class="new_game">
+        
+        <h2>Press the Stop button at 0 .00 (margin .05) to win </h2>
+        <p>Hard Mode to hide hundredths. Choose before Play !</p>        
+        <input type="button" id="play" value="PLAY">
+    </div> 
+    <!-- Game Panels -->
+    <main>
+        <!-- Left Panel Player info and Records -->
+        <div>
+            <div class="player_info">
+                <h4 id="welcome"></h4>
+                <h4 id="total_games"></h4>
+            </div>   
+            <div class="record_info" id="record_info">                
+                <h3>Record:</h3>
+                <h3 id="record">None</h3>
+                <!-- Buttons to reset or leave -->
+                <input type="button" id="reset" value="Reset">       
+                <input type="button" id="exit" value="Leave">      
+            </div>
+        </div> 
+        <br>        
+    
+    <!-- Countdown Panel -->
+    <div id="crono" class="crono">
+        <div class="big_numbers">
+            <span id="crono_signo"> - </span>
+            <span id="crono_horas"></span>
+            <span id="crono_minutos"></span>
+            <span id="crono_segundos"></span>
+            <span id="crono_centesimas"></span>             
+        </div>
+        <!-- Action Buttons -->
+        <div class="cronobuttons">
+            <input type="button" id="start" value="Start">           
+            <input type="button" disabled id="stop" value="Stop">           
+        </div> 
+    </div> 
+    </main>
+    <!-- Score Panel -->
+    <div id="marks" class="marks">
+        <h1>Scores</h1>  
+        <div id="marks_list"></div>       
+    </div>
+    <!-- Script JS GAME -->
+    <script src="./countdown_game.js"></script>    
+</body>
+</html>

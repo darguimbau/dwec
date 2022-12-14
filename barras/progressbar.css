@@ -1,0 +1,46 @@
+body{
+    background-color:rgb(52, 52, 64);
+    color:white;
+    padding:150px;
+    font-family: 'Varela Round', sans-serif;            
+}
+h1,h2,h3{
+    color:rgb(107, 194, 165); 
+    text-shadow: 1px 1px 1px #ababab;
+}
+.bar{
+    display: flex;
+    height: 25px;    
+    width: 230px;
+    border-radius: 5px;
+    border: 2px solid rgb(107, 194, 165);
+    padding:2px;
+}
+.progress{
+    height:100%;
+    background-color:rgb(107, 194, 165); 
+}
+
+.bar_block{
+    display: flex;
+    align-content: center;
+    width:fit-content;
+    gap:3px;
+    padding:3px;
+    border: 2px solid rgb(107, 194, 165);
+    border-radius: 5px;
+}
+.unit_block{
+    background-color: #444451;
+    border-radius: 1px;    
+    width: 20px;
+    height: 25px; 
+    
+}
+.active{
+    background-color: rgb(107, 194, 165);
+}
+button{
+    margin-top:1rem;
+   
+}
