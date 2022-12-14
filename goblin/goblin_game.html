@@ -16,12 +16,15 @@
     <h1 id="title">JS Goblin Slayer</h1>
     <hr>
     <div class="info">
-        <h4>¡Deberás adivinar el arma, conjuro o acción escogido para sobrevivir!</h4>
+        <h5>¡Deberás adivinar el arma, conjuro o acción escogida para sobrevivir!</h5>
         <h6>(Ayuda en consola)</h6>
-    </div>
-    
+    </div>       
     <br>
-    <div class="times hidden"><p>Time: <span class="total_time"></span></p><p>Time to move: <span class="move_time"></span></p></div>
+    <div class="times hidden">
+        <p>Time: <span class="total_time"></span></p>
+        <p>Time to move: <span class="move_time"></span></p>
+        <input type="button" id="surrender" value="Rendirse">
+    </div>
     
     <br>
     <!-- caja de imagenes --> 
@@ -53,21 +56,49 @@
             <option value="word_category_spells">Lanzar un conjuro</option>';
             <option value="word_category_actions">Realizar una acción</option>';                     
             </select>
-            <input type="button"  value="jugar" id="submit_word"> 
-            <!-- <button  name="submit_word" value="" id="submit_word2" >Jugar</button>  Dan problemas  -->
-            
+            <input type="button" id="submit_word" value="Jugar">
+                    
+            <!-- <button  name="submit_word" value="" id="submit_word2" >Jugar</button>  Dan problemas  -->            
         </div>     
     </form>
     <br>
     <!-- mostrar letras usadas --> 
     <div id="used_char"></div>
 
+    <!-- mostrar records almacenados-->
+    <input type="button" id="showRecords" value="Show Records">
+    <br> 
+    <div>
+        <h4  class="recordInfo"></h4>
+    </div>   
+    <div class="tableRecords">
+        <h3>Récords</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Opción</th>
+                    <th scope="col">Tiempo</th>
+                    <th scope="col">Daños</th>
+                </tr>
+            </thead>
+            <tbody id="printRecords">
+                <!-- <tr class="">
+                    <td scope="row">R1C1</td>
+                    <td>R1C2</td>
+                    <td>R1C3</td>
+                </tr>
+            -->
+            </tbody>
+        </table>
+        <br>
+        <input type="button" id="hideRecords" value="Hide">        
+        <input type="button" id="clearRecords" value="Delete">
+        
+    </div>
     <pre>
-        <code>
-          
+        <code>          
         </code>
-    </pre>
-    
+    </pre>    
     <!-- JavaScript propio -->
     <script src="goblin.js"></script> 
 </body>

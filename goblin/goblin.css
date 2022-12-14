@@ -1,6 +1,7 @@
 body{
     background-color:rgb(52, 52, 64);
-    color:white;padding:150px;
+    color:white;
+    padding:150px;
     font-family: 'Varela Round', sans-serif;
     font-weight: 200;
 }      
@@ -47,4 +48,46 @@ span{
 }
 .total_time, .move_time{
     font-size: 2rem;
+}
+.input-field label{
+    display: block;
+    
+}
+.input-field select{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+.input-field select option{
+    color: black;
+    
+}
+input[type="button"]{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3px 15px;
+    
+}
+table{
+    
+    min-width: 300px;
+}
+table thead{
+    color:rgb(107, 194, 165);
+
+}
+table tbody{
+    color:white;
+}
+@media screen and (max-width:700px) {
+    body{
+        padding:25px;
+    }
+    
+    
 }

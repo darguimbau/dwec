@@ -13,6 +13,8 @@ He posat imatges i més arrays
 Problemes amb buttons solucionats posant inputs type button
 A Chrome els alerts surten antes de temps i no carrega imatges finals!!?==>Solucionat posant un Delay!
 Funcionament de key events
+
+!!preventDefault()!!
  */
 
 //Declaració de const Interacció amb HTML
@@ -30,7 +32,6 @@ const panelTime = document.querySelector(".times");
 const totalTime = document.querySelector(".total_time");
 const moveTime = document.querySelector(".move_time");
 
-
 const timeMove = new Date();
 const timeGame = new Date();
 
@@ -40,7 +41,19 @@ let cronoGame;
 let secondsGame = 0;
 let minutesGame = 0;
 
-const recordsArray = [];
+//Gestión de Records
+const panelRecords = document.querySelector("#printRecords");
+const panelRecordInfo = document.querySelector(".recordInfo");
+const tableRecords = document.querySelector(".tableRecords");
+tableRecords.style.display="none";
+const btnShowRecords = document.querySelector("#showRecords");
+const btnHideRecords = document.querySelector("#hideRecords");
+const btnClearRecords = document.querySelector("#clearRecords");
+let countdownClear;    
+let timerClear;
+
+//Rendirse
+const btnSurrender = document.querySelector("#surrender");
 
 // Nombre de falls que corresponen amb imatges
 const failsMax = 6;
@@ -68,8 +81,16 @@ actionWords = ["agarrar", "derribar", "desarmar", "retirarse", "correr", "defend
 console.log("Elige una opción y dale a 'jugar'")
 //Personatje
 knight.innerHTML = '<img src="./img/001.png">';
-//Espera per començar
+//Cargar LocalStorage
+retrieveLocalStorage();
+
+//Events Listenners
 buttonWord.addEventListener("click", play);
+btnShowRecords.addEventListener("click", showRecords);
+btnHideRecords.addEventListener("click", hideRecords);
+btnClearRecords.addEventListener("click", delayClear);
+btnSurrender.addEventListener("click", gameOver);
+
 
 
 //FUNCIÓ PRINCIPAL
@@ -302,8 +323,6 @@ function gameOver(){
     // formStart.style.display = "block";
 }
 
-
-
 // TIME FUNCTIONS
 
 function goTime(){
@@ -367,30 +386,50 @@ function countDown(){
 
 //Localstorage and check records
 
+//Actualización: el record se actualiza si el tiempo es menor o si los errores son menores
     function checkRecord(word, minutes, seconds, fails){
         let key = word;
         let values = [minutes, seconds, fails];
+        let isChanged = false;
         //console.log(values); 
 
+        //Guardamos los valores de LocalStorage para poder modificarlos
         let localWord = JSON.parse(localStorage.getItem(word));
         //console.log(typeof localWord);
-        //console.log(localWord);
+        console.log(localWord);
         
         if (localWord !== null){
             
-            if((localWord[0] < minutes) || (localWord[0] == minutes && localWord[1] < seconds )){
-                console.log("record preexistente");
-                return;
+            if((localWord[0] > minutes) || (localWord[0] == minutes && localWord[1] > seconds )){
+                //El tiempo es menor, lo actualizamos
+                localWord[0] = minutes;
+                localWord[1] = seconds;
+                localStorage.setItem(key, JSON.stringify(localWord));
+                console.log(key + ": récord de tiempo sobreescrito");
+                panelRecordInfo.innerHTML = key + ": récord de tiempo sobreescrito <br>";
+                isChanged = true; 
 
-            }else{
-                localStorage.setItem(key, JSON.stringify(values));
-                console.log("record sobreescrito");
+            }
+            if(localWord[2] > fails){
+                localWord[2] = fails;               
+                localStorage.setItem(key, JSON.stringify(localWord));
+                console.log(key + ": récord de errores sobreescrito");
+                panelRecordInfo.innerHTML +=  key + ": récord de errores sobreescrito";
+                isChanged = true;
+            }
+            
+            if(!isChanged){
+                console.log("Récord preexistente para " + key);
+
                 return;
+                
             }
            
         }else{
             localStorage.setItem(key, JSON.stringify(values));
-            console.log("record creado");
+            console.log("Nuevo récord creado para " + key);
+            panelRecordInfo.innerHTML = "Nuevo récord creado para " + key;
+
             
 
         }
@@ -399,7 +438,99 @@ function countDown(){
 
     }
 
-//Quitar diacriticos menos ñ
+//Localstorge
+
+//Recover data from local storage
+function retrieveLocalStorage(){
+
+    let key;
+    let values=[];
+    for (var i = 0; i < localStorage.length; i++){
+        //Guardamos la palabra
+        key = localStorage.key(i);
+        //Y sus valores
+        values = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        // console.log(values);
+        // los cargamos en la tabla      
+        loadRecords(key, values);
+    }
+    
+}
+//Carga los records uno a uno en la tabla html
+function loadRecords(key, values){
+    if(values[0] >= 1){
+        panelRecords.innerHTML += '<tr class=""><td scope="row">' + key + '</td><td>'+ values[0]+ 'm ' + + values[1]+ 's' +'</td><td>' + values[2]+ '</td></tr>';
+
+
+    }else{
+        panelRecords.innerHTML += '<tr class=""><td scope="row">' + key + '</td><td>' + values[1]+ 's' + '</td><td>' + values[2]+ '</td></tr>';
+
+    }
+}
+//Muestra la tabla
+function showRecords(){
+    tableRecords.style.display="block";
+    btnShowRecords.style.display="none";
+}
+//Oculta la tabla
+function hideRecords(){
+    tableRecords.style.display="none";
+    btnShowRecords.style.display="block";
+}
+
+//Delay para borrar localstorage
+function delayClear(){
+    btnClearRecords.removeEventListener("click", delayClear, false);
+    btnClearRecords.addEventListener("click", cancelClear, false);
+    
+    btnClearRecords.value = "Cancel (3)";
+
+    countdownClear = setInterval(clearCountdown, 1000);    
+    timerClear = setTimeout(clearLocalStorage, 3000);
+
+
+}
+//Anula borrado de localStorage
+function cancelClear(){
+    btnClearRecords.removeEventListener("click", cancelClear, false);
+    btnClearRecords.addEventListener("click", delayClear, false); 
+
+    clearInterval(countdownClear);
+    clearTimeout(timerClear);
+
+    btnClearRecords.value = "Delete";    
+
+}
+//cuenta atras para borrar
+function clearCountdown(){
+  
+    if(btnClearRecords.value == "Cancel (3)"){        
+        btnClearRecords.value = "Cancel (2)";
+        return;
+    }
+    if(btnClearRecords.value == "Cancel (2)"){
+        btnClearRecords.value = "Cancel (1)";
+        return;
+    }
+    if(btnClearRecords.value == "Cancel (1)"){        
+        btnClearRecords.value = "Delete";
+        clearInterval(countdownClear);//important! no sé perquè
+        return;
+    }
+}
+
+
+//Borra localstorage
+function clearLocalStorage(){
+    window.localStorage.clear();
+    //Oculta tabla
+    hideRecords();
+    //Vaciar records
+    panelRecords.innerHTML = "";
+
+}
+
+//Quitar diacriticos menos ñ en las comparaciones de carácteres
 
 function sinAcentos(text){
 
@@ -410,7 +541,8 @@ function sinAcentos(text){
 
 }
 // Elimina los diacríticos de un texto (ES6)
-//
+
+//SIN USO
 function eliminarDiacriticos(texto) {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
 }
