@@ -1,0 +1,43 @@
+
+//Added node_modules for changing colors (or anything) of Bootstrap-classes
+// For a list of Bootstrap variables we can override, look at node_modules\bootstrap\scss\_variables.scss
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap');
+
+// First override some individual color variables
+$primary: #749173;
+$secondary: #69bba7;
+$success: #4decdf;
+$info: #13101c;
+$warning: #945707;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #343a40;
+$primary-light: #e774a5;
+
+// Then add them to the custom theme-colors map, together with any additional colors you might need
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+  primary-light: $primary-light,
+  // add any additional color below
+);
+
+// //Default fonts
+// // scss-docs-start font-variables
+// // stylelint-disable value-keyword-case
+$font-family-sans-serif:         'Asap', sans-serif !default;
+// $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// // stylelint-enable value-keyword-case
+// $font-family-base:            var(--#{$variable-prefix}font-sans-serif) !default;
+// $font-family-code:            var(--#{$variable-prefix}font-monospace) !default;
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
